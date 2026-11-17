@@ -1,44 +1,904 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProfEPT - Programa de Pós-Graduação</title>
-  <style>
-    /* Reseta margens e faz a página ocupar 100% da altura da tela */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      display: flex;
-      justify-content: center; /* Centraliza na horizontal */
-      align-items: center;    /* Centraliza na vertical */
-      min-height: 100vh;      /* Garante a altura total da janela */
-      background-color: #f4f7f6; /* Fundo suave combinando com a identidade visual */
-    }
-
-    .container {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px; /* Cantos levemente arredondados */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Metodológico Digital | Justiça Ambiental na EPT</title>
+    <!-- Carregamento do Tailwind CSS para estilização responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregamento da fonte Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        ifal: {
+                            dark: '#1b5e20',
+                            primary: '#2e7d32',
+                            light: '#e8f5e9',
+                            accent: '#c8e6c9'
+                        },
+                        terracotta: {
+                            dark: '#9a3412',
+                            primary: '#d97706',
+                            light: '#fffbeb',
+                            border: '#fde68a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos customizados para transições suaves e scrollbar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Ocultar barra de rolagem horizontal em menus mobile mantendo funcionalidade */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <div class="container">
-    <!-- Substitua 'ProfEPT.jpg' pelo caminho ou nome exato do arquivo da imagem -->
-    <img src="ProfEPT.jpg" alt="Logo ProfEPT - Programa de Pós-Graduação em Educação Profissional e Tecnológica">
-  </div>
+    <!-- Faixa Superior: Identificação Institucional e Selo de Protótipo -->
+    <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <span class="font-medium tracking-wide">Mestrado Profissional em Educação Profissional e Tecnológica — ProfEPT / IFAL</span>
+            </div>
+            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full font-semibold">
+                Protótipo v1.0 — Produto Educacional (IFAL Campus Viçosa)
+            </span>
+        </div>
+    </div>
 
+    <!-- Cabeçalho Principal -->
+    <header class="bg-gradient-to-r from-ifal-dark to-ifal-primary text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium mb-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Guia Metodológico Digital &bull; WebQuest Interativa</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight tracking-tight">
+                        Justiça Ambiental e Currículo Integrado no Ensino de Geografia
+                    </h1>
+                    <p class="mt-2 text-ifal-light/90 text-sm sm:text-base font-light">
+                        Dispositivo autoformativo e roteiro de intervenção pedagógica para a Educação Profissional e Tecnológica (EPT)
+                    </p>
+                </div>
+                
+                <!-- Card de Autoria -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 text-xs sm:text-sm shrink-0">
+                    <p class="text-emerald-200 font-semibold uppercase tracking-wider text-[11px] mb-1">Autoria & Orientação</p>
+                    <p class="font-medium text-white">Bruno Ferreira da Silva Santos</p>
+                    <p class="text-emerald-100/80 text-xs mt-0.5">Mestrando ProfEPT / IFAL</p>
+                    <div class="my-2 border-t border-white/15"></div>
+                    <p class="text-emerald-100/90 text-xs">Orientador: <strong class="font-medium text-white">Prof. Dr. Ricardo Jorge de Sousa Cavalcanti</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegação Principal (Abas) -->
+        <nav class="bg-ifal-dark/60 border-t border-white/10">
+            <div class="max-w-6xl mx-auto px-4 flex overflow-x-auto no-scrollbar" role="tablist">
+                <button onclick="switchMainTab('apresentacao')" id="tab-apresentacao" role="tab" aria-selected="true"
+                    class="main-tab-btn active flex items-center gap-2 px-5 py-3.5 text-sm font-semibold border-b-4 border-white text-white whitespace-nowrap transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    1. Apresentação & Bases
+                </button>
+                <button onclick="switchMainTab('oficinas')" id="tab-oficinas" role="tab" aria-selected="false"
+                    class="main-tab-btn flex items-center gap-2 px-5 py-3.5 text-sm font-medium border-b-4 border-transparent text-emerald-100/80 hover:text-white whitespace-nowrap transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    2. Painel das 4 Oficinas
+                </button>
+                <button onclick="switchMainTab('recursos')" id="tab-recursos" role="tab" aria-selected="false"
+                    class="main-tab-btn flex items-center gap-2 px-5 py-3.5 text-sm font-medium border-b-4 border-transparent text-emerald-100/80 hover:text-white whitespace-nowrap transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    3. Recursos & Apoio
+                </button>
+                <button onclick="switchMainTab('colaborativo')" id="tab-colaborativo" role="tab" aria-selected="false"
+                    class="main-tab-btn flex items-center gap-2 px-5 py-3.5 text-sm font-medium border-b-4 border-transparent text-emerald-100/80 hover:text-white whitespace-nowrap transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    4. Espaço Colaborativo (GAS)
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+
+        <!-- =====================================================================
+             SEÇÃO 1: APRESENTAÇÃO & BASES TEÓRICAS
+        ====================================================================== -->
+        <section id="section-apresentacao" class="main-section fade-in space-y-8">
+            
+            <!-- Bloco de Boas-vindas ao Docente -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="flex-1 space-y-4">
+                        <span class="inline-block bg-ifal-light text-ifal-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Carta ao(à) Docente da Rede Federal
+                        </span>
+                        <h2 class="text-2xl font-bold text-slate-800">
+                            Superando o tecnicismo: o território vivido como sala de aula
+                        </h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            Prezado(a) professor(a), este <strong>Guia Metodológico Digital</strong> nasceu de uma inquietação concreta no âmbito do <strong>IFAL — Campus Viçosa</strong>: enquanto o município pulsa com contradições socioespaciais latentes (como os riscos habitacionais em áreas de encosta e a degradação da bacia hidrográfica do Rio Paraíba), as ementas tradicionais de Geografia frequentemente restringem-se a abordagens físicas e descritivas descontextualizadas.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Pensado inicialmente para turmas do <strong>Curso Técnico em Informática para Internet Integrado ao Ensino Médio</strong>, este produto educacional não funciona como um manual rígido, mas como um <em>dispositivo autoformativo</em>. Ele convida você e seus estudantes a articular os saberes técnicos da formação profissional ao letramento geográfico crítico, promovendo a <strong>Formação Humana Integral</strong> e a politecnia.
+                        </p>
+                        <div class="pt-2">
+                            <button onclick="switchMainTab('oficinas')" class="inline-flex items-center gap-2 bg-ifal-primary hover:bg-ifal-dark text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                                <span>Explorar as 4 Oficinas Práticas</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Box Lateral: Ficha Técnica da Intervenção -->
+                    <div class="w-full lg:w-80 bg-slate-50 rounded-xl border border-slate-200 p-5 space-y-4 shrink-0">
+                        <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider border-b border-slate-200 pb-2">
+                            Ficha Técnica da Sequência
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-ifal-primary font-bold">&bull;</span>
+                                <div>
+                                    <strong class="text-slate-700 block">Carga Horária Total:</strong>
+                                    <span class="text-slate-600">8 horas-aula (4 oficinas de 2h cada)</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-ifal-primary font-bold">&bull;</span>
+                                <div>
+                                    <strong class="text-slate-700 block">Público-Alvo Referência:</strong>
+                                    <span class="text-slate-600">1ª Série do Ensino Médio Integrado (Técnico em Informática)</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-ifal-primary font-bold">&bull;</span>
+                                <div>
+                                    <strong class="text-slate-700 block">Abordagem Metodológica:</strong>
+                                    <span class="text-slate-600">Pesquisa-Ação Colaborativa e Enfoque Globalizador</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-ifal-primary font-bold">&bull;</span>
+                                <div>
+                                    <strong class="text-slate-700 block">Recorte Territorial:</strong>
+                                    <span class="text-slate-600">Viçosa/AL (Adaptável a qualquer território)</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Fundamentação Teórica -->
+            <div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Pilares Teórico-Metodológicos</h3>
+                    <p class="text-sm text-slate-500">Os três eixos conceituais que sustentam a mediação pedagógica desta WebQuest</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1: Antoni Zabala -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:border-ifal-primary/50 transition-colors">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-ifal-dark flex items-center justify-center font-bold mb-4">
+                                01
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-800">Antoni Zabala (1998)</h4>
+                            <p class="text-xs font-semibold text-ifal-primary uppercase tracking-wider mt-0.5 mb-3">
+                                Tipologia de Conteúdos & Enfoque Globalizador
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                A Sequência Didática é adotada como unidade preferencial de análise da prática educativa. Rompe-se com o ensino puramente enciclopédico ao articular quatro dimensões indissociáveis: conteúdos <strong>Factuais, Conceituais, Procedimentais e Atitudinais</strong>, partindo de problemas reais para gerar conflito cognitivo e avaliação formativa.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                            Obra base: <em>A prática educativa: como ensinar</em>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Henri Acselrad -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:border-ifal-primary/50 transition-colors">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-ifal-dark flex items-center justify-center font-bold mb-4">
+                                02
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-800">Henri Acselrad et al. (2009)</h4>
+                            <p class="text-xs font-semibold text-ifal-primary uppercase tracking-wider mt-0.5 mb-3">
+                                Justiça Ambiental & Mais-Valia Ambiental
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Desmistifica discursos ecológicos neutros ao evidenciar que os riscos ambientais não são democráticos. A injustiça ambiental concentra danos sobre populações vulnerabilizadas (hiperperiferias, encostas, margens de rios), configurando uma <strong>"mais-valia ambiental"</strong> e revelando o recorte racial e de classe na degradação.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                            Obra base: <em>O que é justiça ambiental</em>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Miguel Arroyo -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:border-ifal-primary/50 transition-colors">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-ifal-dark flex items-center justify-center font-bold mb-4">
+                                03
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-800">Miguel Arroyo (2013)</h4>
+                            <p class="text-xs font-semibold text-ifal-primary uppercase tracking-wider mt-0.5 mb-3">
+                                Justiça Curricular & Território em Disputa
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                O currículo não é neutro (Apple; Silva); o silenciamento das lutas e vivências das comunidades periféricas constitui violência simbólica. Assumir o currículo como <strong>território em disputa</strong> permite promover a ecologia de saberes e a Justiça Curricular, legitimando a realidade local como conhecimento escolar válido.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                            Obra base: <em>Currículo, território em disputa</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SEÇÃO 2: PAINEL DAS 4 OFICINAS (SUB-NAVEGAÇÃO INTERATIVA)
+        ====================================================================== -->
+        <section id="section-oficinas" class="main-section hidden fade-in space-y-6">
+            
+            <!-- Cabeçalho da Seção e Seletor de Oficinas -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Roteiro Interativo das Oficinas Didáticas</h2>
+                        <p class="text-sm text-slate-500">Selecione uma oficina abaixo para visualizar os objetivos, tipologia de conteúdos, passo a passo e dicas de mediação.</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg self-start">
+                        <svg class="w-4 h-4 text-ifal-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Duração: 2h/aula por oficina
+                    </span>
+                </div>
+
+                <!-- Botões das 4 Oficinas -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" role="tablist">
+                    <button onclick="selectOficina(1)" id="btn-oficina-1"
+                        class="oficina-btn text-left p-4 rounded-xl border-2 border-ifal-primary bg-ifal-light/60 transition-all">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-ifal-dark">Oficina 01</span>
+                            <span class="text-xs bg-ifal-primary text-white px-2 py-0.5 rounded font-medium">2h</span>
+                        </div>
+                        <p class="font-bold text-slate-800 text-sm">O que é Justiça Ambiental?</p>
+                        <p class="text-xs text-slate-600 mt-1 line-clamp-1">Bônus x Ônus, PNRS e Caso Braskem</p>
+                    </button>
+
+                    <button onclick="selectOficina(2)" id="btn-oficina-2"
+                        class="oficina-btn text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Oficina 02</span>
+                            <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">2h</span>
+                        </div>
+                        <p class="font-bold text-slate-800 text-sm">Letramento Ambiental e TICs</p>
+                        <p class="text-xs text-slate-600 mt-1 line-clamp-1">WebQuest IBGE/SNIS e Contra-narrativas</p>
+                    </button>
+
+                    <button onclick="selectOficina(3)" id="btn-oficina-3"
+                        class="oficina-btn text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Oficina 03</span>
+                            <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">2h</span>
+                        </div>
+                        <p class="font-bold text-slate-800 text-sm">Racismo Ambiental e Dados</p>
+                        <p class="text-xs text-slate-600 mt-1 line-clamp-1">Geotecnologias e Controle Social</p>
+                    </button>
+
+                    <button onclick="selectOficina(4)" id="btn-oficina-4"
+                        class="oficina-btn text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Oficina 04</span>
+                            <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">2h</span>
+                        </div>
+                        <p class="font-bold text-slate-800 text-sm">Justiça Curricular e Ação</p>
+                        <p class="text-xs text-slate-600 mt-1 line-clamp-1">Análise do PPC e Grupo Focal</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Área Dinâmica onde o Conteúdo da Oficina Selecionada é Renderizado -->
+            <div id="oficina-content-container" class="fade-in">
+                <!-- Preenchido via JavaScript ao carregar e ao clicar -->
+            </div>
+
+        </section>
+
+        <!-- =====================================================================
+             SEÇÃO 3: RECURSOS & APOIO PEDAGÓGICO
+        ====================================================================== -->
+        <section id="section-recursos" class="main-section hidden fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Repositório de Apoio ao Docente</h2>
+                <p class="text-slate-600 text-sm mb-6">
+                    Bases de dados oficiais, marcos legais, textos de referência e instrumentos práticos para execução das oficinas em sala de aula ou laboratório de informática.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Coluna 1: Bases de Dados e Legislação -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-ifal-dark border-b border-slate-200 pb-2">
+                            Bases Oficiais & Marcos Legais (WebQuest)
+                        </h3>
+                        
+                        <a href="https://cidades.ibge.gov.br/brasil/al/vicosa/panorama" target="_blank" rel="noopener noreferrer"
+                           class="block p-4 rounded-xl border border-slate-200 hover:border-ifal-primary hover:bg-ifal-light/30 transition-all group">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-800 group-hover:text-ifal-dark">IBGE Cidades — Panorama de Viçosa/AL</span>
+                                <span class="text-xs bg-emerald-100 text-ifal-dark px-2 py-0.5 rounded font-medium">Oficinas 2 e 3</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1">Indicadores demográficos, renda, esgotamento sanitário e recortes territoriais do município.</p>
+                        </a>
+
+                        <a href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis" target="_blank" rel="noopener noreferrer"
+                           class="block p-4 rounded-xl border border-slate-200 hover:border-ifal-primary hover:bg-ifal-light/30 transition-all group">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-800 group-hover:text-ifal-dark">SNIS — Sistema Nacional de Informações sobre Saneamento</span>
+                                <span class="text-xs bg-emerald-100 text-ifal-dark px-2 py-0.5 rounded font-medium">Oficina 2</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1">Dados oficiais sobre coleta de resíduos sólidos, manejo e cobertura de água/esgoto.</p>
+                        </a>
+
+                        <a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm" target="_blank" rel="noopener noreferrer"
+                           class="block p-4 rounded-xl border border-slate-200 hover:border-ifal-primary hover:bg-ifal-light/30 transition-all group">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-800 group-hover:text-ifal-dark">Lei nº 12.305/2010 — Política Nacional de Resíduos Sólidos</span>
+                                <span class="text-xs bg-emerald-100 text-ifal-dark px-2 py-0.5 rounded font-medium">Oficinas 1, 2 e 3</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1">Art. 3º (Resíduos x Rejeitos e Controle Social), Art. 7º (Universalização) e Art. 47 (Proibição de descarte em corpos hídricos).</p>
+                        </a>
+
+                        <a href="https://www.planalto.gov.br/ccivil_03/leis/l6938.htm" target="_blank" rel="noopener noreferrer"
+                           class="block p-4 rounded-xl border border-slate-200 hover:border-ifal-primary hover:bg-ifal-light/30 transition-all group">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-800 group-hover:text-ifal-dark">Lei nº 6.938/1981 — Política Nacional do Meio Ambiente</span>
+                                <span class="text-xs bg-emerald-100 text-ifal-dark px-2 py-0.5 rounded font-medium">Oficinas 1 e 4</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1">Conceito legal de poluição e degradação da qualidade ambiental (Art. 3º, II e III).</p>
+                        </a>
+                    </div>
+
+                    <!-- Coluna 2: Textos de Apoio e Templates -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-ifal-dark border-b border-slate-200 pb-2">
+                            Textos de Apoio & Instrumentos Didáticos
+                        </h3>
+
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm">Coletânea de Textos Críticos (PDF)</span>
+                                    <p class="text-xs text-slate-600 mt-1">Excertos selecionados de Henri Acselrad (Justiça Ambiental), Milton Santos (Globalização como perversidade) e Miguel Arroyo (Currículo como território em disputa).</p>
+                                </div>
+                                <button onclick="showToast('Simulação: Download da Coletânea de Textos (PDF) iniciado.')" class="shrink-0 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                    Baixar PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm">Estudo de Caso: Desastre Socioambiental da Braskem (AL)</span>
+                                    <p class="text-xs text-slate-600 mt-1">Recurso audiovisual e roteiro de análise cartográfica sobre agentes causadores e comunidades desalojadas em Maceió/AL.</p>
+                                </div>
+                                <a href="https://www.youtube.com/watch?v=0Eqk_SQ81ck" target="_blank" rel="noopener noreferrer" class="shrink-0 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                    Ver Vídeo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm">Ficha de Análise do PPC e Template de Micro-Módulo</span>
+                                    <p class="text-xs text-slate-600 mt-1">Instrumental utilizado na Oficina 04 para os estudantes identificarem silenciamentos na ementa de Geografia e proporem novos conteúdos.</p>
+                                </div>
+                                <button onclick="showToast('Simulação: Download do Template Editável (.DOCX) iniciado.')" class="shrink-0 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                    Template
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm">Roteiro Norteador do Grupo Focal</span>
+                                    <p class="text-xs text-slate-600 mt-1">Questões disparadoras para avaliação formativa e captação das ressignificações discentes sobre Geografia e Informática.</p>
+                                </div>
+                                <button onclick="showToast('Simulação: Roteiro do Grupo Focal aberto para visualização.')" class="shrink-0 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                    Visualizar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SEÇÃO 4: ESPAÇO COLABORATIVO / INTEGRAÇÃO GOOGLE APPS SCRIPT (GAS)
+        ====================================================================== -->
+        <section id="section-colaborativo" class="main-section hidden fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 bg-emerald-100 text-ifal-dark text-xs font-bold px-3 py-1 rounded-full mb-3">
+                        <span>Arquitetura Viva &bull; Integração Google Apps Script (GAS)</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-800">Rede Colaborativa de Docentes Aplicadores</h2>
+                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                        Em consonância com a <strong>Pesquisa-Ação Colaborativa</strong> (Ibiapina, 2008), este Produto Educacional é um artefato vivo. Docentes da Rede Federal e de outras redes públicas que aplicarem esta Sequência Didática podem registrar aqui suas adaptações territoriais, dificuldades e sugestões de melhoria.
+                    </p>
+                </div>
+
+                <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Formulário Preparado para GAS -->
+                    <form id="gas-feedback-form" onsubmit="handleGasSubmit(event)" class="lg:col-span-2 space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="docente-nome" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Nome do(a) Docente *</label>
+                                <input type="text" id="docente-nome" required placeholder="Ex.: Prof.ª Maria Silva"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-ifal-primary focus:ring-2 focus:ring-ifal-primary/20">
+                            </div>
+                            <div>
+                                <label for="docente-instituicao" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Instituição / Campus *</label>
+                                <input type="text" id="docente-instituicao" required placeholder="Ex.: IFAL - Campus Palmeira dos Índios"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-ifal-primary focus:ring-2 focus:ring-ifal-primary/20">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="docente-turma" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Curso / Série Aplicada *</label>
+                                <input type="text" id="docente-turma" required placeholder="Ex.: 1º Ano - Técnico em Agropecuária"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-ifal-primary focus:ring-2 focus:ring-ifal-primary/20">
+                            </div>
+                            <div>
+                                <label for="docente-oficina" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Escopo da Aplicação *</label>
+                                <select id="docente-oficina" required
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white focus:outline-none focus:border-ifal-primary focus:ring-2 focus:ring-ifal-primary/20">
+                                    <option value="Sequência Completa (4 Oficinas)">Sequência Completa (4 Oficinas)</option>
+                                    <option value="Oficina 01 - Justiça Ambiental">Oficina 01 — O que é Justiça Ambiental?</option>
+                                    <option value="Oficina 02 - Letramento Ambiental">Oficina 02 — Letramento Ambiental e TICs</option>
+                                    <option value="Oficina 03 - Racismo Ambiental">Oficina 03 — Racismo Ambiental e Dados</option>
+                                    <option value="Oficina 04 - Justiça Curricular">Oficina 04 — Justiça Curricular e Ação</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="docente-relato" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Relato de Experiência, Adaptações Locais e Sugestões *</label>
+                            <textarea id="docente-relato" rows="4" required placeholder="Descreva como os estudantes reagiram ao debate, quais conflitos ambientais locais foram mapeados e quais ajustes você sugere ao guia..."
+                                class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:border-ifal-primary focus:ring-2 focus:ring-ifal-primary/20"></textarea>
+                        </div>
+
+                        <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+                            <span class="text-xs text-slate-500">
+                                * No ambiente de produção, os dados são enviados via <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">fetch()</code> para um Web App do Google Apps Script (Planilha Google).
+                            </span>
+                            <button type="submit" id="btn-submit-gas"
+                                class="bg-ifal-primary hover:bg-ifal-dark text-white font-semibold px-6 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2">
+                                <span>Registrar Contribuição Docente</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- Mensagem de Retorno Simulado do GAS -->
+                        <div id="gas-response-box" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <div>
+                                    <p class="font-bold">Relato registrado com sucesso (Simulação GAS)!</p>
+                                    <p id="gas-response-detail" class="text-xs text-emerald-800 mt-1"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Painel Lateral Explicativo sobre a Integração Técnica -->
+                    <div class="bg-slate-50 rounded-xl border border-slate-200 p-5 space-y-4">
+                        <h3 class="font-bold text-slate-800 text-sm">Por que este formato no ProfEPT?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Ao adotar uma arquitetura web leve (<strong>HTML5 + CSS3 + JS + Google Apps Script</strong>), o Produto Educacional elimina custos de hospedagem e manutenção de servidores, garantindo perenidade e acesso aberto.
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-3 bg-white rounded-lg border border-slate-200">
+                                <strong class="text-ifal-dark block">1. Autoria Docente</strong>
+                                <span class="text-slate-600">O professor não é mero executor; ele adapta o roteiro ao seu município e devolve feedback.</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-lg border border-slate-200">
+                                <strong class="text-ifal-dark block">2. Aderência à EPT</strong>
+                                <span class="text-slate-600">Dialoga diretamente com a área de Informática para Internet, servindo inclusive de inspiração técnica para os alunos.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-white border-t border-slate-200 py-6 px-4 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div>
+                <p class="font-semibold text-slate-700">Produto Educacional vinculado à Dissertação de Mestrado (ProfEPT / IFAL)</p>
+                <p class="mt-0.5">Pesquisa: <em>"Justiça Ambiental no Ensino de Geografia: Reflexões sobre Currículo Escolar de Nível Médio Integrado ao Técnico do IFAL - Campus Viçosa"</em></p>
+            </div>
+            <div class="text-right">
+                <p>Instituto Federal de Alagoas — Campus Benedito Bentes / Campus Viçosa</p>
+                <p class="mt-0.5">Protótipo de Apresentação &bull; 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast de Notificação (Substitui alert()) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span id="toast-message">Mensagem</span>
+    </div>
+
+    <!-- Script de Interatividade e Dados das Oficinas -->
+    <script>
+        // Banco de dados estruturado das 4 Oficinas conforme a Dissertação
+        const oficinasData = {
+            1: {
+                numero: "Oficina 01",
+                titulo: "O que é Justiça Ambiental? Mapeando Bônus e Ônus",
+                foco: "Conflitos e vulnerabilidades locais em Viçosa/AL: áreas de encosta, margens do Rio Paraíba e áreas de disposição inadequada de resíduos.",
+                duracao: "2 horas-aula",
+                tipologia: {
+                    factual: "Identificação geográfica das áreas de risco em Viçosa/AL, perfil socioeconômico das populações atingidas e distinção legal entre resíduos sólidos e rejeitos.",
+                    conceitual: "Definição de Justiça Ambiental (Acselrad et al.), Segregação Socioespacial e articulação com o direito constitucional ao meio ambiente equilibrado (Art. 225, CF/88) e a PNMA (Lei 6.938/81).",
+                    procedimental: "Análise de notícias locais, leitura cartográfica colaborativa e georreferenciamento participativo de riscos e locais de moradia.",
+                    atitudinal: "Reconhecimento da dimensão política das problemáticas ambientais, superando visões puramente técnicas ou naturalizantes."
+                },
+                momentos: [
+                    {
+                        titulo: "Momento I: Problematização Inicial — Quem vive próximo ao perigo?",
+                        descricao: "Inicie com a pergunta disparadora: 'Quem sofre mais com a poluição, rejeitos e a falta de saneamento na nossa cidade?'. Convide os estudantes a listarem áreas de risco em Viçosa e, no mapa projetado (Google Maps ou impresso), marquem onde residem e onde estão os riscos. Conduza o debate evidenciando o contraste espacial entre quem vive no 'bônus' (praças, infraestrutura) e quem vive no 'ônus' (encostas, margens do Rio Paraíba)."
+                    },
+                    {
+                        titulo: "Momento II: Organização do Conteúdo — Espaço Produzido e Estudo de Caso",
+                        descricao: "Apresente o conceito de Justiça Ambiental (Acselrad) apoiado em trechos de Milton Santos sobre a produção desigual do espaço. Em seguida, exiba o vídeo curto sobre o desastre socioambiental da Braskem em Maceió/AL, solicitando que os grupos esquematizem no mapa os agentes causadores e as comunidades desalojadas, consolidando os três eixos da injustiça ambiental: localização do risco, perfil socioeconômico e agente causador."
+                    },
+                    {
+                        titulo: "Momento III: Aplicação — Esboço de Intervenção Técnico-Geográfica",
+                        descricao: "Divididos em grupos, os alunos esboçam uma primeira proposta de intervenção que articule a análise geográfica do problema identificado aos conhecimentos do Curso Técnico em Informática (ex: ideia de mapa interativo ou portal de alerta), amparados no dever compartilhado previsto na Constituição Federal."
+                    }
+                ],
+                recursos: ["Projetor e Quadro", "Google Maps ou Mapa Impresso de Viçosa/AL", "Notícias locais", "Vídeo: Caso Braskem (Maceió/AL)", "Textos de apoio (Acselrad; Milton Santos)"],
+                dicaMediacao: "Atenção ao uso do termo do senso comum 'lixo'! Utilize o momento do mapeamento para intervir pedagogicamente com o Art. 3º da Política Nacional de Resíduos Sólidos (Lei nº 12.305/2010), diferenciando 'resíduos sólidos' (que possuem valor econômico/social e admitem reciclagem) de 'rejeitos' (sem alternativa viável de tratamento). Isso eleva o rigor técnico e jurídico do debate."
+            },
+            2: {
+                numero: "Oficina 02",
+                titulo: "Letramento Ambiental Crítico e Tecnologias de Informação",
+                foco: "Análise crítica de discursos midiáticos e investigação em bases de dados oficiais sobre saneamento e a bacia do Rio Paraíba.",
+                duracao: "2 horas-aula",
+                tipologia: {
+                    factual: "Dados oficiais de cobertura de esgotamento sanitário e coleta de resíduos em Viçosa/AL (IBGE e SNIS).",
+                    conceitual: "Letramento Ambiental Crítico e diretriz legal de universalização do acesso aos serviços públicos de saneamento básico (Art. 7º, X da PNRS e Lei 11.445/2007).",
+                    procedimental: "Execução de WebQuest em laboratório de informática, organização de indicadores em planilhas/bancos de dados e reescrita crítica de textos jornalísticos.",
+                    atitudinal: "Postura questionadora frente a discursos midiáticos higienistas que culpabilizam individualmente as populações periféricas pela degradação."
+                },
+                momentos: [
+                    {
+                        titulo: "Momento I: Problematização — O Conflito de Discursos na Mídia",
+                        descricao: "Apresente duas notícias locais contrastantes: uma com viés higienista tradicional (culpando a 'falta de educação' dos moradores ribeirinhos pela sujeira) e outra com viés crítico (apontando a ausência de coleta e saneamento público). Formalize o conceito de Letramento Ambiental como a capacidade de decodificar as relações de poder por trás dos discursos ambientais."
+                    },
+                    {
+                        titulo: "Momento II: Organização do Conteúdo — WebQuest no Laboratório",
+                        descricao: "No laboratório de informática, os grupos acessam bases oficiais (IBGE Cidades e SNIS) guiados por duas questões legais: (1) As periferias e encostas de Viçosa possuem o mesmo direito à universalização do saneamento que o centro? (2) O descarte de rejeitos nas margens do Rio Paraíba viola a proibição do Art. 47, I da Lei 12.305/2010? Os alunos estruturam esses dados em tabelas ou protótipos de banco de dados."
+                    },
+                    {
+                        titulo: "Momento III: Aplicação — Construção de Contra-Narrativas",
+                        descricao: "De posse dos dados estatísticos e marcos legais, cada grupo reescreve um parágrafo da notícia higienista analisada no início da aula, transformando-a em uma contra-narrativa fundamentada que aponte a responsabilidade do poder público e a violação do direito ao saneamento."
+                    }
+                ],
+                recursos: ["Laboratório de Informática com Internet", "Roteiro Digital da WebQuest (links IBGE e SNIS)", "Recortes de notícias locais", "Editores de planilhas / SGBD"],
+                dicaMediacao: "Ao circular entre as equipes no laboratório de informática, estimule os estudantes a perceberem que o código, a planilha e o banco de dados não são ferramentas neutras: quando alimentados com indicadores do IBGE, tornam-se instrumentos técnicos de denúncia social e defesa de direitos."
+            },
+            3: {
+                numero: "Oficina 03",
+                titulo: "Racismo Ambiental e Geotecnologias",
+                foco: "A dimensão racial na distribuição desigual dos riscos ambientais e o uso de camadas cartográficas digitais para controle social.",
+                duracao: "2 horas-aula",
+                tipologia: {
+                    factual: "Indicadores sociodemográficos (cruzamento entre raça/cor, renda e saneamento) e histórico de conflitos ambientais em comunidades negras e quilombolas.",
+                    conceitual: "Conceito de Racismo Ambiental (Robert Bullard; Henri Acselrad), responsabilidade compartilhada pelo ciclo de vida dos produtos (Art. 30, PNRS) e Controle Social (Art. 3º, VI).",
+                    procedimental: "Processamento de dados brutos e sobreposição de camadas cartográficas (áreas de risco geológico/hidrográfico x perfil racial) em ferramentas digitais.",
+                    atitudinal: "Empatia, reconhecimento da diversidade e repúdio ao racismo estrutural refletido na organização desigual do território (Art. 3º, IV e Art. 5º, XLI, CF/88)."
+                },
+                momentos: [
+                    {
+                        titulo: "Momento I: Problematização — A Cor e a Renda das Áreas de Risco",
+                        descricao: "Retome os problemas mapeados nas oficinas anteriores apresentando dados demográficos de Viçosa/AL e Alagoas. Conduza um debate guiado sobre o processo histórico que empurrou populações negras, quilombolas e periféricas para as encostas e margens de rios, demonstrando que a segregação socioespacial não é obra do acaso."
+                    },
+                    {
+                        titulo: "Momento II: Organização do Conteúdo — Formalizando o Racismo Ambiental",
+                        descricao: "Apresente o conceito de Racismo Ambiental e articule-o ao princípio da responsabilidade compartilhada pelo ciclo de vida dos produtos (PNRS): quando o Estado e o mercado falham na gestão integrada dos resíduos, o ônus físico recai seletivamente sobre territórios negros e periféricos. Analise manchetes de conflitos ambientais no Nordeste."
+                    },
+                    {
+                        titulo: "Momento III: Aplicação — Mapa Digital de Denúncia e Controle Social",
+                        descricao: "Os grupos retomam o projeto técnico de informática iniciado nas oficinas anteriores e adicionam camadas de análise racial e socioeconômica utilizando ferramentas cartográficas digitais (como Google My Maps), gerando um mapa de denúncia técnica que fomente o controle social previsto na legislação."
+                    }
+                ],
+                recursos: ["Computadores / Laboratório", "Dados demográficos (IBGE) e Secretaria Municipal de Meio Ambiente", "Google My Maps ou software SIG simplificado", "Manchetes de conflitos ambientais em Alagoas"],
+                dicaMediacao: "Alguns estudantes podem inicialmente atribuir a desigualdade ambiental apenas à 'pobreza' (fator econômico). Ajude-os a ler os dados desagregados por raça/cor (conforme aponta Acselrad) para evidenciar que, mesmo em faixas de renda semelhantes, a variável racial é determinante na exposição a rejeitos e áreas de risco."
+            },
+            4: {
+                numero: "Oficina 04",
+                titulo: "Justiça Curricular, Análise do PPC e Avaliação",
+                foco: "O currículo como território em disputa: análise crítica da ementa de Geografia do IFAL Campus Viçosa e protagonismo estudantil.",
+                duracao: "2 horas-aula",
+                tipologia: {
+                    factual: "Estrutura formal da ementa do componente curricular de Geografia no Projeto Pedagógico do Curso (PPC) Técnico em Informática para Internet.",
+                    conceitual: "Justiça Curricular (Miguel Arroyo; Ponce), Currículo Oculto (Michael Apple; John Taylor Gatto) e direito constitucional à participação e controle social (Art. 193, CF/88).",
+                    procedimental: "Análise documental crítica da ementa escolar, elaboração de micro-módulos pedagógicos propositivos e autoavaliação em Grupo Focal.",
+                    atitudinal: "Protagonismo estudantil, autoria crítica e valorização dos saberes locais e das comunidades atingidas como conhecimentos legítimos na escola."
+                },
+                momentos: [
+                    {
+                        titulo: "Momento I: Problematização — O Silêncio como Violência Curricular",
+                        descricao: "Provoque a turma: 'Quantas vezes a história dos quilombos, das encostas de Viçosa ou da poluição do Rio Paraíba foi tema central nas aulas?'. Discuta como o currículo oficial e o currículo oculto operam para naturalizar desigualdades ao priorizar apenas conteúdos físicos e técnicos fragmentados."
+                    },
+                    {
+                        titulo: "Momento II: Organização do Conteúdo — Analisando o PPC do Curso",
+                        descricao: "Apresente o conceito de Justiça Curricular (Arroyo). Entregue cópias impressas ou digitais da ementa de Geografia do PPC do curso. Em grupos, os estudantes devem auditar o documento, identificando o que está presente, o que foi silenciado e onde os conceitos de Justiça Ambiental, Racismo Ambiental e Saneamento Básico devem ser inseridos."
+                    },
+                    {
+                        titulo: "Momento III: Aplicação & Culminância — Micro-Módulos e Grupo Focal",
+                        descricao: "Cada grupo apresenta um micro-módulo propositivo (5 a 10 min) de alteração curricular integrando Geografia e Informática. Encerre a Sequência Didática com a realização do Grupo Focal de avaliação formativa, captando as reflexões coletivas sobre o papel da tecnologia e da Geografia na luta por justiça territorial."
+                    }
+                ],
+                recursos: ["Cópias da Ementa de Geografia (PPC IFAL Viçosa)", "Template impresso/digital para criação de Micro-Módulo", "Gravador de áudio (para registro do Grupo Focal)", "Quadro e Projetor"],
+                dicaMediacao: "Este é o momento ápice da pesquisa-ação colaborativa. Garanta que o Grupo Focal seja um espaço horizontal de escuta ativa, sem caráter avaliativo punitivo. Deixe claro aos estudantes que as propostas construídas por eles subsidiarão diretamente a reflexão docente sobre o currículo real do campus."
+            }
+        };
+
+        // Função para alternar entre as abas principais
+        function switchMainTab(tabName) {
+            // Ocultar todas as seções
+            document.querySelectorAll('.main-section').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+
+            // Resetar estilo de todos os botões de aba
+            document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-white', 'text-white', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-emerald-100/80', 'font-medium');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            // Mostrar seção selecionada
+            const targetSection = document.getElementById(`section-${tabName}`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Ativar botão correspondente
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'border-white', 'text-white', 'font-semibold');
+                activeBtn.classList.remove('border-transparent', 'text-emerald-100/80', 'font-medium');
+                activeBtn.setAttribute('aria-selected', 'true');
+            }
+        }
+
+        // Função para renderizar o conteúdo detalhado de cada Oficina
+        function selectOficina(num) {
+            const data = oficinasData[num];
+            if (!data) return;
+
+            // Atualizar visual dos botões das oficinas
+            document.querySelectorAll('.oficina-btn').forEach((btn, idx) => {
+                const currentNum = idx + 1;
+                const badgeSpan = btn.querySelector('span:first-child');
+                const timeSpan = btn.querySelector('span:last-child');
+                
+                if (currentNum === num) {
+                    btn.classList.remove('border-slate-200', 'bg-white');
+                    btn.classList.add('border-ifal-primary', 'bg-ifal-light/60');
+                    badgeSpan.classList.remove('text-slate-500');
+                    badgeSpan.classList.add('text-ifal-dark');
+                    timeSpan.classList.remove('bg-slate-200', 'text-slate-700');
+                    timeSpan.classList.add('bg-ifal-primary', 'text-white');
+                } else {
+                    btn.classList.add('border-slate-200', 'bg-white');
+                    btn.classList.remove('border-ifal-primary', 'bg-ifal-light/60');
+                    badgeSpan.classList.add('text-slate-500');
+                    badgeSpan.classList.remove('text-ifal-dark');
+                    timeSpan.classList.add('bg-slate-200', 'text-slate-700');
+                    timeSpan.classList.remove('bg-ifal-primary', 'text-white');
+                }
+            });
+
+            // Construir HTML da oficina selecionada
+            const container = document.getElementById('oficina-content-container');
+            container.innerHTML = `
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in">
+                    <!-- Cabeçalho da Oficina -->
+                    <div class="bg-slate-50 border-b border-slate-200 p-6 sm:p-8">
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="bg-ifal-dark text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                ${data.numero}
+                            </span>
+                            <span class="bg-emerald-100 text-ifal-dark text-xs font-semibold px-3 py-1 rounded-full">
+                                Duração: ${data.duracao}
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">${data.titulo}</h3>
+                        <p class="text-slate-600 text-sm mt-2"><strong>Foco Territorial e Temático:</strong> ${data.foco}</p>
+                    </div>
+
+                    <div class="p-6 sm:p-8 space-y-8">
+                        
+                        <!-- Dica de Mediação Docente (Destaque em Terracota/Âmbar) -->
+                        <div class="bg-terracotta-light border-l-4 border-terracotta-primary rounded-r-xl p-5 shadow-xs">
+                            <div class="flex items-start gap-3.5">
+                                <div class="bg-amber-100 text-terracotta-dark p-2 rounded-lg shrink-0 mt-0.5">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-terracotta-dark uppercase tracking-wider">
+                                        Dica de Mediação Docente
+                                    </h4>
+                                    <p class="text-sm text-amber-950/90 mt-1 leading-relaxed">
+                                        ${data.dicaMediacao}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tipologia de Conteúdos (Antoni Zabala) -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-ifal-primary"></span>
+                                Tipologia de Conteúdos (Antoni Zabala, 1998)
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <span class="text-xs font-bold text-ifal-dark uppercase tracking-wider block mb-1">1. Conteúdos Factuais (Saber dados/fatos)</span>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${data.tipologia.factual}</p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <span class="text-xs font-bold text-ifal-dark uppercase tracking-wider block mb-1">2. Conteúdos Conceituais (Compreender significados)</span>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${data.tipologia.conceitual}</p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <span class="text-xs font-bold text-ifal-dark uppercase tracking-wider block mb-1">3. Conteúdos Procedimentais (Saber fazer/investigar)</span>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${data.tipologia.procedimental}</p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <span class="text-xs font-bold text-ifal-dark uppercase tracking-wider block mb-1">4. Conteúdos Atitudinais (Ser e agir no território)</span>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${data.tipologia.atitudinal}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passo a Passo da Condução Pedagógica -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-ifal-primary"></span>
+                                Passo a Passo da Condução em Sala / Laboratório
+                            </h4>
+                            <div class="space-y-4">
+                                ${data.momentos.map((mom, index) => `
+                                    <div class="flex gap-4">
+                                        <div class="flex flex-col items-center">
+                                            <div class="w-8 h-8 rounded-full bg-ifal-light border-2 border-ifal-primary text-ifal-dark font-bold text-xs flex items-center justify-center shrink-0">
+                                                ${index + 1}
+                                            </div>
+                                            ${index < data.momentos.length - 1 ? '<div class="w-0.5 h-full bg-slate-200 my-1"></div>' : ''}
+                                        </div>
+                                        <div class="pb-4">
+                                            <h5 class="font-bold text-slate-800 text-sm sm:text-base">${mom.titulo}</h5>
+                                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">${mom.descricao}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Recursos Necessários -->
+                        <div class="pt-4 border-t border-slate-200">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">Recursos e Materiais Necessários</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${data.recursos.map(rec => `
+                                    <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-200">
+                                        <svg class="w-3.5 h-3.5 text-ifal-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        ${rec}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            `;
+        }
+
+        // Simulação de Envio do Formulário para o Google Apps Script (GAS)
+        function handleGasSubmit(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('docente-nome').value;
+            const instituicao = document.getElementById('docente-instituicao').value;
+            const oficina = document.getElementById('docente-oficina').value;
+            const btn = document.getElementById('btn-submit-gas');
+            const responseBox = document.getElementById('gas-response-box');
+            const responseDetail = document.getElementById('gas-response-detail');
+
+            // Estado de carregamento simulado
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span>Enviando ao Google Apps Script...</span>';
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                
+                const timestamp = new Date().toLocaleString('pt-BR');
+                responseDetail.innerHTML = `Obrigado, <strong>${nome}</strong> (${instituicao}). Seu relato referente a <em>"${oficina}"</em> foi estruturado no payload JSON e registrado em <strong>${timestamp}</strong>.`;
+                responseBox.classList.remove('hidden');
+                
+                showToast('Feedback docente registrado com sucesso!');
+                document.getElementById('gas-feedback-form').reset();
+            }, 800);
+        }
+
+        // Exibir notificação discreta (Toast) sem usar alert()
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Inicializar a Oficina 01 por padrão ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            selectOficina(1);
+        });
+    </script>
 </body>
 </html>
